@@ -9,19 +9,19 @@ typedef struct _Hash {
 /* bucket number for hash table */
 /*==================================================================*/
 const static size_t prime_num [20] = {
-	67,    97,    151,   197,   257,
-	293,   397,   557,   797,   1103,
-	1597,  2297,  3187,  6287,  9257,
-	12289, 24593, 49157, 98317, 25165843
+    67,    97,    151,   197,   257,
+    293,   397,   557,   797,   1103,
+    1597,  2297,  3187,  6287,  9257,
+    12289, 24593, 49157, 98317, 25165843
 };
 
 static size_t calc_bucket_num (size_t num)
 {
-	for (size_t i = 0; i < 20U; ++i) {
-		if (prime_num[i] >= num)
-			return prime_num[i];
-	}
-	return (~0x0);
+    for (size_t i = 0; i < 20U; ++i) {
+        if (prime_num[i] >= num)
+            return prime_num[i];
+    }
+    return (~0x0);
 }
 
 /*==================================================================*/
@@ -40,7 +40,7 @@ static size_t hash_function (const char *s, size_t len)
 /*==================================================================*/
 Hash *hash_create (size_t size)
 {
-	size_t bucket = calc_bucket_num(size);
+    size_t bucket = calc_bucket_num(size);
 
     Hash *hash = (Hash*)malloc(sizeof(Hash));
     hash->value = (List*)malloc(bucket * sizeof(List));
